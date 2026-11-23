@@ -1,4 +1,9 @@
 class Solution:
+    def reverse(self,nums,left,right):
+        while left<right:
+            nums[left],nums[right]=nums[right],nums[left]
+            left+=1
+            right-=1
     def rotate(self, nums: list[int], k: int) -> None:
         """
         Do not return anything, modify nums in-place instead.
@@ -7,5 +12,8 @@ class Solution:
         if n==0:
             return
         k=k%n
-        nums[:]=nums[n-k:]+nums[:n-k]    
+        # nums[:]=nums[n-k:]+nums[:n-k] 
+        self.reverse(nums,n-k,n-1)
+        self.reverse(nums,0,n-k-1)
+        self.reverse(nums,0,n-1)   
         
